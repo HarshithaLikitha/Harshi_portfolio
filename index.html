@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terikoti Harshitha — Portfolio</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      --pink:     #f06292;
+      --pink-dark:#c2185b;
+      --purple:   #9c27b0;
+      --light:    #fce4ec;
+      --white:    #ffffff;
+      --grey:     #6c757d;
+      --dark:     #212529;
+      --card-bg:  #fff9fb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      color: var(--dark);
+      background: var(--white);
+    }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+    .navbar {
+      background: var(--white) !important;
+      border-bottom: 2px solid var(--light);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 12px rgba(240,98,146,0.08);
+    }
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--pink-dark) !important;
+      font-weight: 700;
+    }
+    .nav-link {
+      color: var(--dark) !important;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin: 0 0.25rem;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--pink) !important; }
+
+    #hero {
+      background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 50%, #e8eaf6 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(240,98,146,0.1);
+      top: -100px; right: -100px;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      width: 250px; height: 250px;
+      border-radius: 50%;
+      background: rgba(156,39,176,0.08);
+      bottom: -50px; left: -50px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--white);
+      border: 1px solid var(--pink);
+      color: var(--pink-dark);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.25rem;
+    }
+    .hero-name {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    .hero-name span { color: var(--pink-dark); font-style: italic; }
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--grey);
+      max-width: 460px;
+      margin: 1rem 0 2rem;
+      line-height: 1.7;
+    }
+    .btn-pink {
+      background: var(--pink-dark);
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.8rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-pink:hover { background: var(--pink); transform: translateY(-2px); color: #fff; }
+    .btn-outline-pink {
+      border: 2px solid var(--pink-dark);
+      color: var(--pink-dark);
+      background: transparent;
+      padding: 0.65rem 1.6rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.25s;
+    }
+    .btn-outline-pink:hover { background: var(--pink-dark); color: #fff; }
+    .hero-avatar {
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      border: 5px solid var(--white);
+      box-shadow: 0 20px 60px rgba(240,98,146,0.2);
+      background: linear-gradient(135deg, var(--pink) 0%, var(--purple) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: #fff;
+      margin: 0 auto;
+    }
+
+    .stats-section {
+      background: var(--pink-dark);
+      color: #fff;
+      padding: 3rem 0;
+    }
+    .stat-box { text-align: center; padding: 1rem; }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-top: 0.25rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--pink-dark);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .section-title em { color: var(--pink-dark); font-style: italic; }
+    .divider {
+      width: 50px; height: 3px;
+      background: var(--pink);
+      margin-bottom: 2.5rem;
+    }
+
+    #about { background: #fff; padding: 6rem 0; }
+    .about-text { font-size: 0.97rem; color: #555; line-height: 1.85; }
+    .about-text strong { color: var(--pink-dark); }
+    .skill-pill {
+      display: inline-block;
+      background: var(--light);
+      border: 1px solid rgba(240,98,146,0.3);
+      color: var(--pink-dark);
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.3rem 0.9rem;
+      border-radius: 50px;
+      margin: 0.2rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .skill-pill:hover { background: var(--pink-dark); color: #fff; border-color: var(--pink-dark); }
+
+    #projects { background: var(--card-bg); padding: 6rem 0; }
+    .project-card {
+      background: var(--white);
+      border: 1px solid rgba(240,98,146,0.18);
+      border-radius: 10px;
+      padding: 2rem;
+      height: 100%;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--pink), var(--purple));
+      border-radius: 10px 10px 0 0;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(240,98,146,0.15);
+      border-color: var(--pink);
+    }
+    .project-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: rgba(240,98,146,0.1);
+      position: absolute;
+      top: 1rem; right: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .project-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pink-dark);
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .project-desc { font-size: 0.88rem; color: var(--grey); line-height: 1.75; margin-bottom: 1rem; }
+    .tech-tag {
+      display: inline-block;
+      background: #f8e8f0;
+      color: var(--pink-dark);
+      font-size: 0.65rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      margin: 0.15rem;
+      font-weight: 500;
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--pink-dark);
+      text-decoration: none;
+      margin-top: 1.25rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: gap 0.2s;
+    }
+    .project-link:hover { gap: 0.7rem; color: var(--pink); }
+
+    #profiles { background: #fff; padding: 6rem 0; }
+    .profile-card {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.5rem;
+      border: 2px solid var(--light);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--dark);
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      background: var(--white);
+      height: 100%;
+    }
+    .profile-card:hover {
+      border-color: var(--pink);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(240,98,146,0.12);
+      color: var(--dark);
+    }
+    .profile-icon {
+      width: 56px; height: 56px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .profile-name { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .profile-handle { font-size: 0.78rem; color: var(--grey); }
+    .profile-arrow { margin-left: auto; color: var(--pink); font-size: 0.9rem; }
+
+    #experience { background: var(--card-bg); padding: 6rem 0; }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--pink), var(--light));
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+    .timeline-item.visible { opacity: 1; transform: none; }
+    .timeline-dot {
+      position: absolute;
+      left: -2.35rem;
+      top: 0.4rem;
+      width: 12px; height: 12px;
+      background: var(--pink-dark);
+      border-radius: 50%;
+      border: 2px solid var(--white);
+      box-shadow: 0 0 0 3px rgba(240,98,146,0.2);
+    }
+    .timeline-date {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--pink-dark);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .timeline-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.15rem; }
+    .timeline-org { font-size: 0.85rem; color: var(--grey); margin-bottom: 0.5rem; }
+    .timeline-desc { font-size: 0.88rem; color: #666; line-height: 1.7; }
+
+    /* ── Certifications ── */
+    #certifications { background: #fff; padding: 6rem 0; }
+    .cert-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(240,98,146,0.2);
+      border-radius: 10px;
+      background: var(--card-bg);
+      text-decoration: none;
+      color: var(--dark);
+      height: 100%;
+      transition: border-color 0.25s, background 0.25s, transform 0.25s;
+    }
+    .cert-card:hover {
+      border-color: var(--pink);
+      background: var(--light);
+      transform: translateY(-3px);
+      color: var(--dark);
+    }
+    .cert-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .cert-name { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .cert-issuer { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey); }
+
+    .achievement-row {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--light);
+    }
+    .achievement-row:last-child { border-bottom: none; }
+    .ach-icon {
+      width: 40px; height: 40px;
+      background: var(--light);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--pink-dark);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .ach-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .ach-desc { font-size: 0.83rem; color: var(--grey); }
+
+    #contact { background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 100%); padding: 6rem 0; }
+    .contact-card {
+      display: flex; align-items: center; gap: 1.25rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--white);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 4px 15px rgba(240,98,146,0.06);
+    }
+    .contact-card:hover { transform: translateX(6px); box-shadow: 0 8px 24px rgba(240,98,146,0.15); color: var(--dark); }
+    .contact-icon {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--grey); }
+    .contact-val { font-size: 0.92rem; font-weight: 500; }
+    .contact-arrow { margin-left: auto; color: var(--pink); }
+
+    .aspire-badge {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      background: linear-gradient(90deg, #e3f2fd, #e8eaf6);
+      border: 1px solid #9fa8da;
+      border-radius: 8px;
+      padding: 0.85rem 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .aspire-badge i { color: #5c6bc0; font-size: 1.1rem; }
+    .aspire-text { font-size: 0.82rem; color: #555; }
+    .aspire-text strong { color: #3949ab; font-size: 0.72rem; display: block; text-transform: uppercase; letter-spacing: 0.1em; }
+
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 0.8rem;
+    }
+    footer span { color: var(--pink); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(25px); }
+      to   { opacity: 1; transform: none; }
+    }
+    .fadeUp { opacity: 0; animation: fadeUp 0.7s forwards; }
+    .fadeUp-1 { animation-delay: 0.2s; }
+    .fadeUp-2 { animation-delay: 0.4s; }
+    .fadeUp-3 { animation-delay: 0.6s; }
+    .fadeUp-4 { animation-delay: 0.8s; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      #hero { padding: 5rem 0 3rem; text-align: center; }
+      .hero-tagline { margin: 1rem auto 2rem; }
+      .hero-cta { justify-content: center; }
+      .hero-avatar { width: 200px; height: 200px; font-size: 3.5rem; margin-top: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">T. <span style="color:var(--pink)">Harshitha</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#profiles">Coding Profiles</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7">
+          <p class="hero-badge fadeUp fadeUp-1">✨ Aspiring Software Developer</p>
+          <h1 class="hero-name fadeUp fadeUp-2">
+            Terikoti<br>
+            <span>Harshitha</span>
+          </h1>
+          <p class="hero-tagline fadeUp fadeUp-3">
+            Computer Science & IT student at Lendi Institute · CGPA 9.15 · Passionate about building software that solves real problems.
+          </p>
+          <div class="d-flex gap-3 flex-wrap fadeUp fadeUp-4">
+            <a href="#projects" class="btn-pink">
+              <i class="fas fa-folder-open"></i> View Projects
+            </a>
+            <a href="https://github.com/HarshithaLikitha" target="_blank" class="btn-outline-pink">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-5 text-center">
+          <div class="hero-avatar fadeUp fadeUp-3">T</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ── -->
+  <div class="stats-section">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <span class="stat-number">9.15</span>
+            <span class="stat-label">CGPA</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Problems Solved</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <span class="stat-number">139</span>
+            <span class="stat-label">Day Streak</span>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-box">
+            <span class="stat-number">4+</span>
+            <span class="stat-label">Certifications</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-start g-5">
+        <div class="col-lg-4 reveal">
+          <span class="section-label">01 — About Me</span>
+          <h2 class="section-title">Developer.<br><em>Learner.</em><br>Leader.</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="col-lg-8 reveal">
+
+          <div class="aspire-badge">
+            <i class="fas fa-award"></i>
+            <div class="aspire-text">
+              <strong>Aspire Leaders Program — Cohort 1, 2026</strong>
+              9-week leadership program mentored by Harvard Business School faculty. Developed goal-setting, problem-solving, and resilient leadership skills.
+            </div>
+          </div>
+
+          <p class="about-text">
+            Hi! I'm a <strong>Computer Science & IT undergraduate</strong> at Lendi Institute of Engineering and Technology, Vizianagaram — currently in my 2nd year with a CGPA of 9.15. I love building things with code, from AI-powered chatbots to deadline-tracking platforms.
+          </p>
+          <p class="about-text mt-3">
+            I completed an <strong>AI & ML internship</strong> with Edunet Foundation in collaboration with Microsoft, participated in the global <strong>Aspire Leaders Program</strong>, and was nominated for <strong>Smart India Hackathon</strong>. My consistency speaks for itself — 50+ CodeChef problems, a 139-day Mimo streak, and a 50-day coding streak.
+          </p>
+
+          <div class="mt-4">
+            <span class="section-label mb-2" style="display:block">Technical Skills</span>
+            <div>
+              <span class="skill-pill">Python</span>
+              <span class="skill-pill">Java</span>
+              <span class="skill-pill">C</span>
+              <span class="skill-pill">HTML / CSS</span>
+              <span class="skill-pill">JavaScript</span>
+              <span class="skill-pill">SQL / MySQL</span>
+              <span class="skill-pill">Flask</span>
+              <span class="skill-pill">REST API</span>
+              <span class="skill-pill">Node.js</span>
+              <span class="skill-pill">Bootstrap</span>
+              <span class="skill-pill">Web Scraping</span>
+              <span class="skill-pill">JSON</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col reveal">
+          <span class="section-label">02 — What I've Built</span>
+          <h2 class="section-title">Selected <em>Projects</em></h2>
+          <div class="divider"></div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <!-- Project 1 -->
+        <div class="col-lg-7 reveal">
+          <div class="project-card">
+            <span class="project-num">01</span>
+            <p class="project-tag">Full-Stack · AI · Automation</p>
+            <h3 class="project-title">Deadline Defenders<br>Smart Reminder System</h3>
+            <p class="project-desc">
+              An intelligent deadline-tracking platform for Indian competitive exam aspirants (JEE, NEET, UPSC, CAT, GATE). Automatically collects deadline data from the web 3× daily and sends push notifications at 30, 14, 7, 3, 1, and 0 days before each deadline — no manual input needed.
+            </p>
+            <p class="project-desc">
+              Uses <strong>SerpAPI</strong> with a 3-key rotation strategy, <strong>chrono-node NLP</strong> for date extraction, a 6-hour MySQL cache, and a Progressive Web App (PWA) frontend with calendar view, urgency-tiered cards, and mobile-first design.
+            </p>
+            <div>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Express.js</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag">SerpAPI</span>
+              <span class="tech-tag">chrono-node</span>
+              <span class="tech-tag">Web Push API</span>
+              <span class="tech-tag">PWA</span>
+              <span class="tech-tag">node-cron</span>
+              <span class="tech-tag">nodemailer</span>
+            </div>
+            <a href="https://github.com/HarshithaLikitha" target="_blank" class="project-link">
+              View on GitHub <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="col-lg-5 reveal">
+          <div class="project-card">
+            <span class="project-num">02</span>
+            <p class="project-tag">AI · Backend · REST API</p>
+            <h3 class="project-title">Lendi College Service Bot</h3>
+            <p class="project-desc">
+              An AI-powered chatbot giving students instant answers about departments, faculty, cutoffs, facilities, and admissions — available 24/7.
+            </p>
+            <p class="project-desc">
+              Uses <strong>Google Gemini API</strong> for two-stage intelligence: keyword extraction from natural language queries, and conversational response formatting. Features an eligibility calculator that parses EAMCET rank, category, gender, and branch from free-form text.
+            </p>
+            <div>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag">Gemini API</span>
+              <span class="tech-tag">REST API</span>
+              <span class="tech-tag">JSON</span>
+              <span class="tech-tag">HTML/CSS/JS</span>
+              <span class="tech-tag">Flask-CORS</span>
+            </div>
+            <a href="https://github.com/HarshithaLikitha" target="_blank" class="project-link">
+              View on GitHub <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CODING PROFILES ── -->
+  <section id="profiles">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col reveal">
+          <span class="section-label">03 — Find Me Coding</span>
+          <h2 class="section-title">Coding <em>Profiles</em></h2>
+          <div class="divider"></div>
+        </div>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4 reveal">
+          <a href="https://www.hackerrank.com/profile/23kd1a0762" target="_blank" class="profile-card">
+            <div class="profile-icon" style="background: linear-gradient(135deg, #2ec866, #1ba94c);">
+              <i class="fab fa-hackerrank" style="color:#fff; font-size:1.5rem;"></i>
+            </div>
+            <div>
+              <p class="profile-name">HackerRank</p>
+              <p class="profile-handle">@23kd1a0762</p>
+            </div>
+            <i class="fas fa-arrow-right profile-arrow"></i>
+          </a>
+        </div>
+        <div class="col-md-4 reveal">
+          <a href="https://www.codechef.com/users/brisk_year_33" target="_blank" class="profile-card">
+            <div class="profile-icon" style="background: linear-gradient(135deg, #7b3f00, #c17f24);">
+              <i class="fas fa-code" style="color:#fff; font-size:1.3rem;"></i>
+            </div>
+            <div>
+              <p class="profile-name">CodeChef</p>
+              <p class="profile-handle">@brisk_year_33</p>
+            </div>
+            <i class="fas fa-arrow-right profile-arrow"></i>
+          </a>
+        </div>
+        <div class="col-md-4 reveal">
+          <a href="https://www.geeksforgeeks.org/profile/harshithxkjg" target="_blank" class="profile-card">
+            <div class="profile-icon" style="background: linear-gradient(135deg, #2f8d46, #1a5e2b);">
+              <i class="fas fa-laptop-code" style="color:#fff; font-size:1.3rem;"></i>
+            </div>
+            <div>
+              <p class="profile-name">GeeksforGeeks</p>
+              <p class="profile-handle">@harshithxkjg</p>
+            </div>
+            <i class="fas fa-arrow-right profile-arrow"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ── -->
+  <section id="experience">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col reveal">
+          <span class="section-label">04 — My Journey</span>
+          <h2 class="section-title">Experience &amp; <em>Education</em></h2>
+          <div class="divider"></div>
+        </div>
+      </div>
+
+      <div class="row g-5">
+        <div class="col-lg-6">
+          <h6 class="section-label mb-4">Work &amp; Programs</h6>
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-date">2026 — 9 Weeks</p>
+              <h4 class="timeline-title">Aspire Leaders Program</h4>
+              <p class="timeline-org">Aspire Institute · Cohort 1, 2026</p>
+              <p class="timeline-desc">Selected for a globally competitive leadership program mentored by Harvard Business School faculty. Developed structured goal-setting, root-cause analysis, adaptive decision-making, and resilient communication skills.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-date">April 2025 — May 2025</p>
+              <h4 class="timeline-title">AI &amp; ML Intern</h4>
+              <p class="timeline-org">Edunet Foundation × Microsoft</p>
+              <p class="timeline-desc">Hands-on internship applying AI and Machine Learning concepts to practical use cases in a Microsoft-backed program.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-date">2023 — Present</p>
+              <h4 class="timeline-title">SIH Nominee</h4>
+              <p class="timeline-org">Smart India Hackathon</p>
+              <p class="timeline-desc">Nominated to represent the college at India's largest national-level hackathon, demonstrating strong technical problem-solving ability.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <h6 class="section-label mb-4">Education</h6>
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-date">2023 — 2027</p>
+              <h4 class="timeline-title">B.Tech — CS &amp; IT</h4>
+              <p class="timeline-org">Lendi Institute of Engineering and Technology, Vizianagaram, AP</p>
+              <p class="timeline-desc">CGPA: 9.15 through 5th semester. Active in project building, certifications, and extracurricular involvement alongside academics.</p>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-date">2021 — 2023</p>
+              <h4 class="timeline-title">Intermediate — MPC</h4>
+              <p class="timeline-org">Sri Medha College · Board of Intermediate Education, AP</p>
+              <p class="timeline-desc">Score: 973 / 1000 — strong foundation in Mathematics, Physics, and Chemistry.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CERTIFICATIONS ── -->
+  <section id="certifications">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col reveal">
+          <span class="section-label">05 — Credentials</span>
+          <h2 class="section-title">Certifications &amp; <em>Achievements</em></h2>
+          <div class="divider"></div>
+        </div>
+      </div>
+
+      <div class="row g-3 mb-5">
+        <div class="col-md-6 col-lg-4 reveal">
+          <a href="https://www.udemy.com/certificate/UC-baedad53-9faf-4aa0-bac8-196d6a3d9f04/" target="_blank" class="cert-card">
+            <div class="cert-icon"><i class="fas fa-database"></i></div>
+            <div>
+              <p class="cert-name">Mastering MySQL</p>
+              <p class="cert-issuer">Udemy · Feb 2026</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal">
+          <a href="https://drive.google.com/file/d/1njx2guZsbBBMZMtv2C7hbm1zzzLM-A6-/view?usp=sharing" target="_blank" class="cert-card">
+            <div class="cert-icon"><i class="fab fa-java"></i></div>
+            <div>
+              <p class="cert-name">Java Programming</p>
+              <p class="cert-issuer">SoloLearn · Mar 2025</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal">
+          <a href="https://drive.google.com/file/d/16ZHHeTNoziNcSjAaT2GxiVTV-Z89WJPv/view?usp=sharing" target="_blank" class="cert-card">
+            <div class="cert-icon"><i class="fab fa-python"></i></div>
+            <div>
+              <p class="cert-name">Python (Basic)</p>
+              <p class="cert-issuer">Codio via edX · Sep 2024</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal">
+          <a href="https://drive.google.com/file/d/1qf0KmAxSXE_Q6gpyPCdnKQOqyD8acjQc/view?usp=sharing" target="_blank" class="cert-card">
+            <div class="cert-icon"><i class="fas fa-award"></i></div>
+            <div>
+              <p class="cert-name">Aspire Leaders Program</p>
+              <p class="cert-issuer">Aspire Institute · 2026</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6 col-lg-4 reveal">
+          <div class="cert-card" style="cursor:default;">
+            <div class="cert-icon"><i class="fas fa-language"></i></div>
+            <div>
+              <p class="cert-name">EnglishScore Speaking</p>
+              <p class="cert-issuer">CEFR B1 · Aug 2024</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievements -->
+      <div class="row">
+        <div class="col-lg-8 reveal">
+          <span class="section-label mb-3" style="display:block">Notable Achievements</span>
+          <div class="achievement-row">
+            <div class="ach-icon"><i class="fas fa-medal"></i></div>
+            <div>
+              <p class="ach-title">CodeChef Bronze Badge — Problem Solver</p>
+              <p class="ach-desc">50+ competitive programming problems solved on CodeChef, earning the Bronze Problem Solver badge.</p>
+            </div>
+          </div>
+          <div class="achievement-row">
+            <div class="ach-icon"><i class="fas fa-fire"></i></div>
+            <div>
+              <p class="ach-title">50-Day Coding Streak — CodeChef</p>
+              <p class="ach-desc">Maintained a 50-day daily coding streak, showing discipline and consistency.</p>
+            </div>
+          </div>
+          <div class="achievement-row">
+            <div class="ach-icon"><i class="fas fa-bolt"></i></div>
+            <div>
+              <p class="ach-title">139-Day Learning Streak — Mimo App</p>
+              <p class="ach-desc">Sustained a 139-day continuous learning streak across programming modules on Mimo.</p>
+            </div>
+          </div>
+          <div class="achievement-row">
+            <div class="ach-icon"><i class="fas fa-rocket"></i></div>
+            <div>
+              <p class="ach-title">Smart India Hackathon (SIH) Nominee</p>
+              <p class="ach-desc">Institutionally nominated for India's largest national-level hackathon.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="container">
+      <div class="row g-5 align-items-start">
+        <div class="col-lg-5 reveal">
+          <span class="section-label">06 — Let's Connect</span>
+          <h2 class="section-title">Get in <em>Touch</em></h2>
+          <div class="divider"></div>
+          <p style="color:#777; font-size:0.95rem; line-height:1.75;">
+            Open to internships, collaborations, and opportunities in software development, AI/ML, and backend engineering.
+          </p>
+        </div>
+        <div class="col-lg-7 reveal">
+          <a href="mailto:harshitha091206@gmail.com" class="contact-card">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <p class="contact-label">Email</p>
+              <p class="contact-val">harshitha091206@gmail.com</p>
+            </div>
+            <i class="fas fa-arrow-right contact-arrow"></i>
+          </a>
+          <a href="https://github.com/HarshithaLikitha" target="_blank" class="contact-card">
+            <div class="contact-icon"><i class="fab fa-github"></i></div>
+            <div>
+              <p class="contact-label">GitHub</p>
+              <p class="contact-val">github.com/HarshithaLikitha</p>
+            </div>
+            <i class="fas fa-arrow-right contact-arrow"></i>
+          </a>
+          <a href="https://linkedin.com/in/harshitha-terikoti/" target="_blank" class="contact-card">
+            <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+            <div>
+              <p class="contact-label">LinkedIn</p>
+              <p class="contact-val">linkedin.com/in/harshitha-terikoti</p>
+            </div>
+            <i class="fas fa-arrow-right contact-arrow"></i>
+          </a>
+          <div class="contact-card" style="cursor:default;">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <p class="contact-label">Phone</p>
+              <p class="contact-val">+91 7382979635</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="container">
+      <p>© 2026 <span>Terikoti Harshitha</span> · Built with HTML, CSS, JavaScript &amp; Bootstrap</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Scroll reveal using IntersectionObserver
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal, .timeline-item').forEach(function(el) {
+      observer.observe(el);
+    });
+
+    // Navbar active highlight on scroll
+    var sections = document.querySelectorAll('section[id]');
+    var navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', function() {
+      var scrollY = window.scrollY;
+      sections.forEach(function(section) {
+        var sectionTop = section.offsetTop - 100;
+        var sectionHeight = section.offsetHeight;
+        var id = section.getAttribute('id');
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          navLinks.forEach(function(link) {
+            link.style.color = '';
+            if (link.getAttribute('href') === '#' + id) {
+              link.style.color = 'var(--pink-dark)';
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
